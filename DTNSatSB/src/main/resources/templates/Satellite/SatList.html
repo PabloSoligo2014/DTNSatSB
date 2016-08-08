@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Satellites</title>
+<link rel="stylesheet" th:href="@{/style.css}"></link>
+</head>
+<body>
+<h1>Satellites</h1>
+<div th:unless="${#lists.isEmpty(satellites)}">
+      <dl th:each="satellite : ${satellites}">
+        <dt>
+          <span th:text="${satellite.name}">name</span> 
+          <!--  
+          by 
+          <span th:text="${book.author}">Author</span>
+          (ISBN: <span th:text="${book.isbn}">ISBN</span>)
+          -->
+        </dt>
+        
+        <dd>
+          <span th:if="${satellite.noradId}" 
+                th:text="${satellite.noradId}">noradId</span>
+          <!--  
+          <span th:if="${book.description eq null}">
+                No description available</span>
+                -->
+        </dd>
+        
+      </dl>
+    </div>
+    <div th:if="${#lists.isEmpty(satellites)}">
+      <p>There is not satellites!</p>
+    </div>
+    <hr/>
+    <h3>Add a Satellite</h3>
+    <form action="#" th:action="@{/Satellite/SatList}" th:object="${satellite}" method="post">
+      <label for="name">Name:</label>
+      <input type="text" th:field="*{name}" />
+      <label for="noradId">NoradId:</label>
+      <!-- <input type="text" name="name" size="50"></input><br/>  --> 
+      <input type="text" th:field="*{noradId}" />
+     
+      <input type="submit"></input>
+    </form>
+
+
+</body>
+</html>

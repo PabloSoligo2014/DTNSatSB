@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Simulation detail</title>
+<link rel="stylesheet" th:href="@{/style.css}"></link>
+</head>
+<body>
+<h1>Simulation detail</h1>
+<div th:unless="${#lists.isEmpty(simulationList)}">
+      <dl th:each="simulation : ${simulationList}">
+        <dt>
+          <span th:text="${simulation.id}">Id</span> 
+          <!--  
+          by 
+          <span th:text="${book.author}">Author</span>
+          (ISBN: <span th:text="${book.isbn}">ISBN</span>)
+          -->
+        </dt>
+        <!--  
+        <dd class="bookDescription">
+          <span th:if="${book.description}" 
+                th:text="${book.description}">Description</span>
+          <span th:if="${book.description eq null}">
+                No description available</span>
+        </dd>
+        -->
+      </dl>
+    </div>
+    <div th:if="${#lists.isEmpty(simulationList)}">
+      <p>There is not simulations!</p>
+    </div>
+
+
+</body>
+</html>
