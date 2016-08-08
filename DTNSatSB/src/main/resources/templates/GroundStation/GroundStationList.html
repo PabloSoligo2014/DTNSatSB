@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Ground Stations</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"></link>
+
+    
+</head>
+<body>
+<div class="container">
+    
+    <div th:if="${not #lists.isEmpty(groundStations)}">
+        <h2>Ground Station list</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>name</th>
+                <th>latitude</th>
+                <th>longitude</th>
+                <th>altitude</th>
+                <th>View</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="gs : ${groundStations}">
+                <td th:text="${gs.name}"><a href="/product/${gs.id}">Id</a></td>
+                <td th:text="${gs.latitude}">latitude</td>
+                <td th:text="${gs.longitude}">longitude</td>
+                <td th:text="${gs.altitude}">altitude</td>
+                <td><a th:href="${ '/GroundStation/' + gs.id}">View</a></td>
+                <td><a th:href="${'/GroundStation/edit/' + gs.id}">Edit</a></td>
+                <td><a th:href="${'/GroundStation/delete/' + gs.id}">Delete</a></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+ 	<div th:if="${#lists.isEmpty(groundStations)}">
+      <p>There is not Ground Stations!</p>
+    </div>
+
+</body>
+</html>
