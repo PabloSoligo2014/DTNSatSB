@@ -1,5 +1,6 @@
 package org.baikal.dtnsat.controller;
 
+import org.baikal.dtnsat.model.GroundStation;
 import org.baikal.dtnsat.model.Satellite;
 import org.baikal.dtnsat.repository.SatelliteRepository;
 
@@ -27,23 +28,57 @@ public class SatelliteController {
 	public String SatList(ModelMap modelMap){
 		
 		modelMap.put("satellites", repo.findAll());
-		Satellite sat = new Satellite("Completar aqui!");
-		modelMap.put("satellite", sat);
+		//Satellite sat = new Satellite("Completar aqui!");
+		//modelMap.put("satellite", sat);
 		return "Satellite/SatList";
 	}
 	
-	@RequestMapping(value="SatList", method=RequestMethod.POST)
-	public String addSatellite(@ModelAttribute Satellite satellite, ModelMap modelMap) {
-		//satellite.setName(name);
-		//satellite.setName("default");
+	
+	@RequestMapping(value="delete/{id}")
+	public String deleteSatellite(@PathVariable Long id,  ModelMap modelMap) {
 		
-		repo.save(satellite);
-		modelMap.put("satellite", satellite);
-		
-		return "Satellite/Result";
-		//return "redirect:/";	
-		//return "Satellite/SatList";
+		repo.delete(id);
+		modelMap.put("satellites", repo.findAll());
+		return "Satellite/SatList";
+
 	}	
+	
+	@RequestMapping(value="view/{id}")
+	public String viewSatellite(@PathVariable Long id,  ModelMap modelMap) {
+		
+		Satellite satellite = repo.findOne(id) ;
+		modelMap.put("satellite", satellite);
+		return "Satellite/SatForm";
+
+	}	
+	
+	@RequestMapping(value="edit/{id}", method=RequestMethod.GET)
+	public String editSatellite(@PathVariable Long id, ModelMap modelMap) {
+		
+		Satellite satellite = repo.findOne(id);		
+		//repo.save(satellite);
+		modelMap.put("satellite", satellite);
+		return "Satellite/SatForm";
+	}
+	
+	@RequestMapping(value="new", method=RequestMethod.GET)
+	public String newSatellite(ModelMap modelMap) {
+		
+		Satellite satellite = new Satellite();		
+		//repo.save(satellite);
+		modelMap.put("satellite", satellite);
+		return "Satellite/SatForm";
+	}
+	
+	@RequestMapping(value = "SatForm", method = RequestMethod.POST)
+	public String SaveSatellite(Satellite satellite){
+		
+		//System.out.println(satellite.getOrbit().get);
+        this.repo.save(satellite);
+        //return "redirect:/product/" + product.getId();
+        return "Satellite/SatList";
+    }
+	
 	
 	
 	@RequestMapping(method=RequestMethod.GET, value="/fail")

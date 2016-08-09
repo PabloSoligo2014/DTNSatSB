@@ -44,7 +44,71 @@ public class Orbit {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
-    @NotNull
+    public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public Double getEccentricity() {
+		return eccentricity;
+	}
+
+	public void setEccentricity(Double eccentricity) {
+		this.eccentricity = eccentricity;
+	}
+
+	public Double getSemimajorAxis() {
+		return semimajorAxis;
+	}
+
+	public void setSemimajorAxis(Double semimajorAxis) {
+		this.semimajorAxis = semimajorAxis;
+	}
+
+	public Double getInclination() {
+		return inclination;
+	}
+
+	public void setInclination(Double inclination) {
+		this.inclination = inclination;
+	}
+
+	public Double getLongitudeAscendingNode() {
+		return longitudeAscendingNode;
+	}
+
+	public void setLongitudeAscendingNode(Double longitudeAscendingNode) {
+		this.longitudeAscendingNode = longitudeAscendingNode;
+	}
+
+	public Double getArgumentPeriapsis() {
+		return argumentPeriapsis;
+	}
+
+	public void setArgumentPeriapsis(Double argumentPeriapsis) {
+		this.argumentPeriapsis = argumentPeriapsis;
+	}
+
+	public Double getMeanAnomaly() {
+		return meanAnomaly;
+	}
+
+	public void setMeanAnomaly(Double meanAnomaly) {
+		this.meanAnomaly = meanAnomaly;
+	}
+
+	public KeplerianPropagator getPropagator() {
+		return propagator;
+	}
+
+	public void setPropagator(KeplerianPropagator propagator) {
+		this.propagator = propagator;
+	}
+
+	@NotNull
     @Value("0.5")
     @DecimalMin("0.0")
     @DecimalMax("0.99")

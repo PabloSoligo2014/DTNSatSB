@@ -15,8 +15,9 @@ import org.baikal.dtnsat.model.Orbit;
 public class Satellite extends Node {
 	public String noradId;
 	
-
-	@OneToOne(cascade=CascadeType.PERSIST) //<or> @OneToOne(cascade=CascadeType.ALL) <-- for all operation
+	//@OneToOne(orphanRemoval=true)
+	 
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true) //<or> @OneToOne(cascade=CascadeType.ALL) <-- for all operation
     private Orbit orbit;
 	
 	public Orbit getOrbit() {
@@ -25,16 +26,19 @@ public class Satellite extends Node {
 
 	public void setOrbit(Orbit orbit) {
 		this.orbit = orbit;
+		
 	}
 
 	public Satellite(){
 		super();
 		this.orbit = new Orbit(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+		this.setCreationDate(new Date());
 	}
 	
 	public Satellite(String name){
 		super(name);
 		this.orbit = new Orbit(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+		this.setCreationDate(new Date());
 		
 	}
 	
@@ -42,6 +46,7 @@ public class Satellite extends Node {
 			Double argumentPeriapsis, Double meanAnomaly){
 		super(name);
 		this.orbit = new Orbit(eccentricity, semimajorAxis, inclination, longitudeAscendingNode, argumentPeriapsis, meanAnomaly);
+		this.setCreationDate(new Date());
 		
 	}
 	

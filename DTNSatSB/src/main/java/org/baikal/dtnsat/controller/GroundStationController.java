@@ -24,8 +24,7 @@ public class GroundStationController {
 	}
 	
 	@RequestMapping(value="GroundStationList", method = RequestMethod.GET)
-	public String GroundStationList(ModelMap modelMap){
-		
+	public String GroundStationList(ModelMap modelMap){		
 		modelMap.put("groundStations", repo.findAll());
 		//GroundStation gs = new GroundStation();
 		//modelMap.put("satellite", sat);
@@ -56,11 +55,6 @@ public class GroundStationController {
         return "GroundStation/GroundStationList";
     }
 	
-	
-
-    
-
-
 
     /*
     // Afficher le formulaire de modification du Product

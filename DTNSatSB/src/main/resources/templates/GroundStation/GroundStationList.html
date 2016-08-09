@@ -4,12 +4,12 @@
 
     <title>Ground Stations</title>
     <link rel="stylesheet" th:href="@{/css/bootstrap.css}"></link>
-
+	<!--/*/ <th:block th:include="headerinc :: head"></th:block> /*/-->
     
 </head>
 <body>
 <div class="container">
-    
+    <!--/*/ <th:block th:include="header :: header"></th:block> /*/-->
     <div th:if="${not #lists.isEmpty(groundStations)}">
         <h2>Ground Station list</h2>
         <table class="table table-striped">
@@ -38,6 +38,9 @@
  	<div th:if="${#lists.isEmpty(groundStations)}">
       <p>There is not Ground Stations!</p>
     </div>
+    <p>
+      <a href="Index.html" th:href="@{/}">Return to home</a>
+    </p>
 
 </body>
 </html>

@@ -27,13 +27,13 @@ public class DtnSatSbApplication {
 	public CommandLineRunner SatTest(SatelliteRepository repo) {
 		return (args) -> {
 			log.info("TEST");
-			Satellite sat = new Satellite("MiSat");
-			sat.setOrbit(new Orbit(0.01, 10000.0, 0.0, 0.0, 0.0, 	0.0));
+			//Satellite sat = new Satellite("MiSat");
+			//sat.setOrbit(new Orbit(0.01, 10000.0, 0.0, 0.0, 0.0, 	0.0));
 			
 			
-			log.info("Nombre del satelite creado "+sat.getName());
+			//log.info("Nombre del satelite creado "+sat.getName());
 			
-			repo.save(sat);
+			//repo.save(sat);
 			
 			//Creo un satellite con sus elementos orbitales
 		
